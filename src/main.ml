@@ -63,7 +63,7 @@ let handle_connection fd tls_role =
     >>= fun vdi_ref ->
     with_attached_vdi vdi_ref rpc session_id
       (fun filename ->
-         Cleanup.Block.with_block filename (Nbd_lwt_unix.Server.serve t ~read_only:true (module Block))
+         Cleanup.Block.with_block filename (Nbd_lwt_unix.Server.serve t ~read_only:false (module Block))
       )
   in
 
